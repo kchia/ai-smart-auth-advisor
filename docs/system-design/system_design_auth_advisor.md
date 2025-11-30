@@ -123,36 +123,40 @@ Optimistic estimate (aggressive optimization):
 Smart Authentication Advisor Agent
 └── Input: user_id, auth_context (device, location, time, app)
 └── Tools:
-    ├── query_user_auth_history(user_id, days=90)
+    ├── get_user_trust_context(user_id, device_id, location, access_time)
+    │   └── Single BigQuery query with JOINs (replaces 4 separate calls)
     │   └── Returns: {
+    │         // Auth History
     │         total_auths: 450,
     │         avg_auth_step: 7.2,
     │         failed_auths: 2,
     │         success_rate: 99.5%,
-    │         last_failure: "2025-01-05"
-    │       }
-    ├── get_device_trust_score(device_id)
-    │   └── Returns: {
+    │         last_failure: "2025-01-05",
+    │
+    │         // Device Trust
     │         device_age_days: 120,
     │         same_device_auth_count: 380,
-    │         never_flagged: true,
+    │         device_never_flagged: true,
     │         os_up_to_date: true,
-    │         trust_score: 85  // 0-100
-    │       }
-    ├── get_location_trust_score(location, user_id)
-    │   └── Returns: {
+    │         device_trust_score: 85,  // 0-100
+    │
+    │         // Location Trust
     │         location: "37.7749,-122.4194 (San Francisco)",
     │         typical_location: true,
     │         access_count_from_location: 340,
-    │         location_trust_score: 90
-    │       }
-    ├── get_behavioral_trust_score(user_id)
-    │   └── Returns: {
+    │         location_trust_score: 90,  // 0-100
+    │
+    │         // Behavioral Trust
     │         access_time_of_day: "9:15 AM (typical work hours)",
     │         weekday_access: true,
     │         velocity_flags_30d: 0,
-    │         behavioral_trust_score: 75
+    │         behavioral_trust_score: 75,  // 0-100
+    │
+    │         // Pre-computed Composite Score
+    │         composite_trust_score: 85.9
     │       }
+    │   └── Benefits: 1 tool call instead of 4, single optimized query,
+    │                 reduced agent latency, fewer failure points
     ├── recommend_auth_level(context) [LLM]
     │   └── Input: All trust signals
     │   └── Output: {
@@ -168,13 +172,12 @@ Smart Authentication Advisor Agent
 
 └── Flow:
     1. User attempts app access (SSO event triggered)
-    2. Query BigQuery for user's historical auth patterns (last 90 days)
-    3. Extract trust signals:
-       a. Device trust score (0-100)
-       b. Location trust score (0-100)
-       c. Behavioral trust score (0-100)
-       d. Historical success rate
-    4. Calculate composite trust score:
+    2. Query BigQuery for user's historical auth patterns (last 90 days))
+    3. Fetch all trust signals in single call:
+       └── get_user_trust_context(user_id, device_id, location, access_time)
+       └── Returns: device_trust, location_trust, behavioral_trust,
+                    historical_success_rate, composite_trust_score
+    4. Calculate composite trust score (pre-computed in step 3):
        trust_score = (device_score × 0.4) + (location_score × 0.3) +
                      (behavioral_score × 0.2) + (success_rate × 0.1)
        Example: (85 × 0.4) + (90 × 0.3) + (75 × 0.2) + (99 × 0.1) = 85.9
@@ -1132,10 +1135,10 @@ Security Benefits:
 │  SMART AUTHENTICATION ADVISOR AGENT        │   │  50M events/day   │
 │                                            │   └───────────────────┘
 │  Tools:                                    │
-│  • query_user_auth_history (BigQuery)      │
-│  • get_device_trust_score (BigQuery)       │
-│  • get_location_trust_score (BigQuery)     │   ┌───────────────────┐
-│  • get_behavioral_trust_score (BigQuery)   │   │ REAL-TIME AUTH    │
+│  • get_user_trust_context  (BigQuery)      │
+│                                            │
+│                                            │   ┌───────────────────┐
+│                                            │   │ REAL-TIME AUTH    │
 │  • recommend_auth_level (LLM)              │   │ DECISION API      │
 │  • explain_decision (LLM)                  │   │ (Cloud Run)       │
 │                                            │   │                   │
