@@ -1,0 +1,210 @@
+================================================================================
+BASIC STATISTICS
+================================================================================
+
+Total records: 18
+Unique source_identifiers: 10
+Source IDs: ['104', '186', '210', '282', '367', '529', '771', '847', '968', '980']
+
+⚠️  Duplicate source_identifiers found: ['847', '529', '104', '968', '771', '186', '210', '367']
+   ID '847' appears at indices: [0, 10]
+   ID '529' appears at indices: [1, 11]
+   ID '104' appears at indices: [2, 12]
+   ID '968' appears at indices: [3, 13]
+   ID '771' appears at indices: [4, 14]
+   ID '186' appears at indices: [5, 15]
+   ID '210' appears at indices: [6, 16]
+   ID '367' appears at indices: [7, 17]
+
+Timestamp range:
+  created_utc_tstamp: 2025-05-21T01:33:38.743+00:00 to 2025-05-21T01:33:38.743+00:00
+  load_utc_tstamp: 2025-05-22T23:09:32.199425+00:00 to 2025-05-22T23:09:32.199425+00:00
+
+ETL versions: {'agna ', ' exer', ' enim', 'dolor', 'liqui', 'n ull', 'm ips', 'aliqu', 'modo ', ' et d'}
+
+================================================================================
+OKTA AUDIT LOG STATISTICS
+================================================================================
+
+Event Types (unique: 10):
+  o eiusmod tempor incidi: 2
+  r incididunt ut labore et dolore ma: 2
+   ullamco laboris n: 2
+   ut aliquip ex ea commo: 2
+  lit, sed do eiusmod tempor incididunt: 2
+  abore et dolore ma: 2
+  nim ad minim veniam, qu: 2
+   et dolore magna a: 2
+  rud exercitation ullamc: 1
+  ea commodo consequ: 1
+
+Legacy Event Types (unique: 7):
+  abore et dol: 2
+  dipiscing elit, sed do eiusmod tempor incid: 2
+  m, quis nostrud exercitation: 2
+   do eiusmod tempor incididunt ut labo: 2
+  t, consectetur adipiscing el: 2
+  citation ullamco laboris nis: 2
+  nsectetur adipiscing elit, s: 1
+
+Outcome Results:
+  modo co: 2
+  liqua. : 2
+  ut labo: 2
+  orem ipsu: 2
+  agna al: 2
+  ad mini: 2
+  ullamco l: 2
+  strud e: 2
+  iscing el: 1
+  usmod t: 1
+
+Unique Actors (users): 10
+Actor frequency:
+  sed do eiusmod tempo: 2 events
+  olore magna aliqua. Ut enim ad minim veni: 2 events
+  ipiscing elit, sed d: 2 events
+  minim veniam, quis n: 2 events
+  Ut enim ad minim ven: 2 events
+  niam, quis nostrud e: 2 events
+  olore magna aliqua. : 2 events
+  mco laboris nisi ut : 2 events
+  liquip ex ea commodo: 1 events
+  trud exercitation ul: 1 events
+
+Target Analysis:
+  Total target entries: 20
+  Unique target IDs: 11
+
+  Target Types:
+    aliqua. Ut : 2
+    didunt : 2
+    odo : 2
+    quip ex ea c: 2
+    e et dolore : 2
+     ea commod: 2
+    ed do eiusm: 2
+    met, consect: 2
+    labore et : 2
+     tempor inci: 1
+     exercitat: 1
+
+Authentication Steps:
+  Step 8: 6
+  Step 1: 4
+  Step 6: 4
+  Step 9: 2
+  Step 4: 1
+  Step 2: 1
+
+Geographical Context:
+  Unique cities: 10
+  Unique countries: 10
+
+Browsers:
+  modo c: 2
+  lit, s: 2
+  piscing: 2
+  amco la: 2
+  Lorem : 2
+  ng elit: 2
+  ua. Ut : 2
+  labore : 2
+  nostrud: 1
+   magna : 1
+
+Operating Systems:
+  met, con: 2
+  t labore: 2
+  commodo : 2
+  scing el: 2
+  aliqua. : 2
+  magna al: 2
+  amet, co: 2
+  qua. Ut : 2
+  im ad mi: 1
+   consequ: 1
+
+Security Context:
+  Unique AS Numbers: 10
+  isProxy values: {1, 2, 5, 6, 7, 9}
+
+Severity levels:
+  rcit: 2
+  cons: 2
+  quis: 2
+   nis: 2
+  nisi: 2
+   tem: 2
+  ncid: 2
+  iam,: 2
+  ng e: 1
+  liqu: 1
+
+Okta API Versions:
+  v8: 7
+  v3: 6
+  v5: 2
+  v1: 2
+  v4: 1
+
+Debug Context Fields Present:
+  dtHash: 18/18 records
+  requestId: 18/18 records
+  requestUri: 18/18 records
+  threatSuspected: 18/18 records
+  url: 18/18 records
+  logOnlySecurityData: 12/18 records
+  targetEventHookIds: 7/18 records
+  authnRequestId: 7/18 records
+  redirectUri: 4/18 records
+  initiationType: 2/18 records
+  signOnMode: 2/18 records
+  traceId: 2/18 records
+  authCode: 2/18 records
+  clientAuthType: 2/18 records
+  grantType: 2/18 records
+  grantedScopes: 2/18 records
+  requestedScopes: 2/18 records
+  responseTime: 2/18 records
+
+Target Detail Entry Types:
+  policyType: 5
+  policyName: 5
+  signOnModeType: 2
+  expires: 2
+  hash: 2
+  subject: 2
+
+================================================================================
+DATA QUALITY ASSESSMENT
+================================================================================
+
+Null/Missing values in key fields:
+  device: 18/18 records
+  client.id: 14/18 records
+  outcome.reason: 13/18 records
+  target (empty list): 7/18 records
+
+================================================================================
+ANONYMIZATION NOTES
+================================================================================
+
+⚠️  This is ANONYMIZED sample data:
+  - file_name contains Lorem Ipsum text (not real filenames)
+  - Many string fields contain Lorem Ipsum fragments
+  - Values are truncated/obfuscated
+  - Cannot draw real business conclusions from content
+  - CAN analyze structure, patterns, and cardinality
+
+✓  Still useful for understanding:
+  - Data schema and relationships
+  - Field presence/absence patterns
+  - Cardinality (how many unique values)
+  - Data types
+  - Event type distributions
+
+
+================================================================================
+Tasks Complete!
+================================================================================

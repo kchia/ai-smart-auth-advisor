@@ -1,0 +1,231 @@
+houchia@MacBook-Pro parable-interview % python3 scripts/parse_data.py
+================================================================================
+LOADING DATA
+================================================================================
+Total records: 18
+
+Top-level fields in each record:
+['source_identifier', 'file_name', 'created_utc_tstamp', 'load_utc_tstamp', 'etl_version', 'raw_data']
+
+================================================================================
+PARSING NESTED raw_data FIELD
+================================================================================
+Successfully parsed 18 records
+
+================================================================================
+OKTA AUDIT LOG STRUCTURE (raw_data)
+================================================================================
+
+Top-level fields in Okta audit log:
+  - actor: dict
+  - authenticationContext: dict
+  - client: dict
+  - debugContext: dict
+  - device: NoneType
+  - displayMessage: str
+  - eventType: str
+  - legacyEventType: str
+  - outcome: dict
+  - published: str
+  - request: dict
+  - securityContext: dict
+  - severity: str
+  - target: list
+  - transaction: dict
+  - uuid: str
+  - version: str
+
+================================================================================
+DETAILED FIELD BREAKDOWN
+================================================================================
+
+Full schema of first record:
+actor: dict
+  actor.alternateId: str =  exercitation ullamco laboris
+  actor.detailEntry: NoneType = null
+  actor.displayName: str = labore et 
+  actor.id: str = sed do eiusmod tempo
+  actor.type: str = cing
+authenticationContext: dict
+  authenticationContext.authenticationProvider: NoneType = null
+  authenticationContext.authenticationStep: int = 8
+  authenticationContext.credentialProvider: NoneType = null
+  authenticationContext.credentialType: NoneType = null
+  authenticationContext.externalSessionId: str = elit, sed do eiusmod temp
+  authenticationContext.interface: NoneType = null
+  authenticationContext.issuer: NoneType = null
+  authenticationContext.rootSessionId: str = didunt ut labore et dolor
+client: dict
+  client.device: str = mod temp
+  client.geographicalContext: dict
+    client.geographicalContext.city: str = it ame
+    client.geographicalContext.country: str =  sit a
+    client.geographicalContext.geolocation: dict
+    client.geographicalContext.postalCode: str = 03-193
+    client.geographicalContext.state: str = oris ni
+  client.id: str = sit amet, consectetur adipiscing elit, se
+  client.ipAddress: str =  et dolore ma
+  client.userAgent: dict
+    client.userAgent.browser: str = modo c
+    client.userAgent.os: str = met, con
+    client.userAgent.rawUserAgent: str = ctetur adipiscing elit, sed do eiusmod tempor inci
+  client.zone: str = null
+debugContext: dict
+  debugContext.debugData: dict
+    debugContext.debugData.dtHash: str = uis nostrud exercitation ullamco laboris nisi ut a
+    debugContext.debugData.initiationType: str = ct
+    debugContext.debugData.redirectUri: str = ng elit, sed do eiusmod tempor incididunt ut lab
+    debugContext.debugData.requestId: str = rem ipsum dolor sit amet, consec
+    debugContext.debugData.requestUri: str = t amet, consecte
+    debugContext.debugData.signOnMode: str =  quis nostrud 
+    debugContext.debugData.threatSuspected: str = 6
+    debugContext.debugData.traceId: str = um dolor sit amet, consectetur adipi
+    debugContext.debugData.url: str =  ad minim veniam,
+device: NoneType = null
+displayMessage: str = uis nostrud exercitation u
+eventType: str = o eiusmod tempor incidi
+legacyEventType: str = abore et dol
+outcome: dict
+  outcome.reason: NoneType = null
+  outcome.result: str = modo co
+published: str = 2025-04-01T15:38:07.118Z
+request: dict
+  request.ipChain: list
+    request.ipChain[0]: dict
+securityContext: dict
+  securityContext.asNumber: int = 62622
+  securityContext.asOrg: str = orem ipsum dolor si
+  securityContext.domain: str = ercitat
+  securityContext.isProxy: int = 5
+  securityContext.isp: str = nim ad minim veniam
+severity: str = rcit
+target: list
+  target[0]: dict
+    target[0].alternateId: str =  laboris nisi 
+    target[0].detailEntry: dict
+    target[0].displayName: str = tation ullamco
+    target[0].id: str = empor incididunt ut 
+    target[0].type: str = aliqua. Ut 
+transaction: dict
+  transaction.detail: dict
+  transaction.id: str = piscing elit, sed do eiusmod tem
+  transaction.type: str = mod
+uuid: str = agna aliqua. Ut enim ad minim veniam
+version: str = 3
+
+================================================================================
+COLLECTING ALL FIELDS ACROSS ALL RECORDS
+================================================================================
+
+Total unique field paths: 103
+
+All field paths (sorted):
+  actor
+  actor.alternateId
+  actor.detailEntry
+  actor.displayName
+  actor.id
+  actor.type
+  authenticationContext
+  authenticationContext.authenticationProvider
+  authenticationContext.authenticationStep
+  authenticationContext.credentialProvider
+  authenticationContext.credentialType
+  authenticationContext.externalSessionId
+  authenticationContext.interface
+  authenticationContext.issuer
+  authenticationContext.rootSessionId
+  client
+  client.device
+  client.geographicalContext
+  client.geographicalContext.city
+  client.geographicalContext.country
+  client.geographicalContext.geolocation
+  client.geographicalContext.geolocation.lat
+  client.geographicalContext.geolocation.lon
+  client.geographicalContext.postalCode
+  client.geographicalContext.state
+  client.id
+  client.ipAddress
+  client.userAgent
+  client.userAgent.browser
+  client.userAgent.os
+  client.userAgent.rawUserAgent
+  client.zone
+  debugContext
+  debugContext.debugData
+  debugContext.debugData.authCode
+  debugContext.debugData.authnRequestId
+  debugContext.debugData.clientAuthType
+  debugContext.debugData.dtHash
+  debugContext.debugData.grantType
+  debugContext.debugData.grantedScopes
+  debugContext.debugData.initiationType
+  debugContext.debugData.logOnlySecurityData
+  debugContext.debugData.redirectUri
+  debugContext.debugData.requestId
+  debugContext.debugData.requestUri
+  debugContext.debugData.requestedScopes
+  debugContext.debugData.responseTime
+  debugContext.debugData.signOnMode
+  debugContext.debugData.targetEventHookIds
+  debugContext.debugData.threatSuspected
+  debugContext.debugData.traceId
+  debugContext.debugData.url
+  device
+  displayMessage
+  eventType
+  legacyEventType
+  outcome
+  outcome.reason
+  outcome.result
+  published
+  request
+  request.ipChain
+  request.ipChain[0].geographicalContext
+  request.ipChain[0].geographicalContext.city
+  request.ipChain[0].geographicalContext.country
+  request.ipChain[0].geographicalContext.geolocation
+  request.ipChain[0].geographicalContext.geolocation.lat
+  request.ipChain[0].geographicalContext.geolocation.lon
+  request.ipChain[0].geographicalContext.postalCode
+  request.ipChain[0].geographicalContext.state
+  request.ipChain[0].ip
+  request.ipChain[0].source
+  request.ipChain[0].version
+  securityContext
+  securityContext.asNumber
+  securityContext.asOrg
+  securityContext.domain
+  securityContext.isProxy
+  securityContext.isp
+  severity
+  target
+  target[0].alternateId
+  target[0].detailEntry
+  target[0].detailEntry.policyType
+  target[0].detailEntry.signOnModeType
+  target[0].displayName
+  target[0].id
+  target[0].type
+  target[1].alternateId
+  target[1].detailEntry
+  target[1].detailEntry.expires
+  target[1].detailEntry.hash
+  target[1].detailEntry.policyName
+  target[1].detailEntry.subject
+  target[1].displayName
+  target[1].id
+  target[1].type
+  transaction
+  transaction.detail
+  transaction.id
+  transaction.type
+  uuid
+  version
+
+================================================================================
+SAVING PARSED DATA
+================================================================================
+✓ Saved to data/parsed_data.json
+\Complete: Raw data structure parsed!
