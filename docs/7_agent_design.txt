@@ -1,0 +1,87 @@
+  Work Categorizer Agent
+  └── Input: user_id
+
+  └── Tools:
+      ├── 1. query_user_app_history(user_id, days=90)
+      │   └── Returns: {GitHub: 250, Slack: 180, Jira: 90, Figma: 30}
+      │   └── Data source: BigQuery sso_events_raw table
+      │
+      ├── 2. query_similar_users(apps_list)
+      │   └── Input: [GitHub, Slack, Jira, Figma]
+      │   └── Returns: Users with similar app patterns + their categories
+      │   └── Purpose: Provide few-shot examples to LLM
+      │   └── Example: "Users with GitHub+Jira+Figma → 85% Frontend Engineers"
+      │
+      ├── 3. categorize(app_usage) [LLM CALL #1]
+      │   └── Input: App usage metrics + role benchmarks
+      │   └── Output: {category, confidence, reasoning, evidence}
+      │   └── Uses: Few-shot prompting with industry benchmarks
+      │
+      ├── 4. explain(category, app_usage) [LLM CALL #2 to generate narrative summaries for CEOs]
+      │   └── Input: Assigned category + raw app data
+      │   └── Output: Natural language explanation
+      │   └── Example: "Heavy GitHub (250) + Jira (90) + Figma (30)
+      │                  indicates frontend engineering with UX collaboration"
+      │
+      └── 5. suggest_optimizations(category)  [SIMPLE LOOKUP TABLE]
+          └── Input: Work category
+          └── Output: Role-specific productivity recommendations
+          └── Example: "Reduce GitHub auth steps, enable Copilot,
+                       bundle dev tools. Savings: 3-5 hrs/week"
+
+  └── Flow:
+      1. Query BigQuery for user's 90-day app access patterns
+         → {GitHub: 250, Slack: 180, Jira: 90, Figma: 30}
+
+      2. Query for similar users with comparable patterns to provide dynamic few-shot examples to the LLM
+         → "5 users with GitHub+Jira+Figma pattern → 4 Frontend Eng, 1 Full-stack"
+
+      3. LLM categorizes using few-shot prompting (LLM Call #1):
+         Prompt: "Given app usage [GitHub: 250, Jira: 90, Figma: 30]
+                  and benchmarks [Frontend: GitHub 200-400, Jira 60-120...],
+                  and similar users [85% Frontend Engineers],
+                  categorize this user's work role with confidence + reasoning."
+
+         Response: {
+           "category": "Software Engineer (Frontend)",
+           "confidence": 0.92,
+           "reasoning": "GitHub dominance (45% of activity) indicates
+                        active coding. Figma usage (5%) differentiates
+                        from pure backend.",
+           "evidence": ["GitHub + Jira + Slack = 94% of activity",
+                       "Figma presence confirms frontend/UI work"]
+         }
+
+      4. LLM generates explanation (LLM Call #2):
+         "This employee is a Frontend Engineer based on heavy GitHub
+          usage combined with Figma for UI collaboration. Pattern matches
+          typical frontend workflow with 92% confidence."
+
+      5. Generate role-specific optimizations:
+         "For Frontend Engineers:
+          • Reduce GitHub auth from 6 steps → 2 steps (saves 4 min/day)
+          • Enable GitHub Copilot (saves 3-5 hrs/week)
+          • Bundle Jira + Figma + Slack in SSO favorites
+          Projected savings: $7.5k-12.5k/year per engineer"
+
+      6. Store results in BigQuery materialized view (work_categories)
+
+  └── Output to CEO Dashboard:
+      "Work Category Distribution (Client A - 50k employees):
+
+       • Engineering (45%) - 22,500 employees
+         → Friction: Excessive GitHub/Jira auth steps
+         → Opportunity: $2.1M/year savings via policy optimization
+
+       • Sales (20%) - 10,000 employees
+         → Friction: Salesforce + Gmail context switching
+         → Opportunity: $800k/year via CRM consolidation
+
+       • Customer Support (15%) - 7,500 employees
+       • Product/Design (10%) - 5,000 employees
+       • Operations (10%) - 5,000 employees
+
+       Top Recommendation:
+       Implement role-based auth policies for engineering team.
+       Reduce GitHub/Jira auth steps from avg 6 → 2 for trusted devices.
+       Projected ROI: $2.1M/year across 22,500 engineers."
