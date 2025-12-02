@@ -1,0 +1,45 @@
+Loading parsed data...
+======================================================================
+APP CO-OCCURRENCE ANALYSIS
+======================================================================
+
+📊 SUMMARY STATISTICS
+  Total unique users: 10
+  Users accessing 2+ apps: 5 (50%)
+  Distinct app pairs found: 5
+
+🎯 APP PAIRS DISCOVERED (Co-occurrence)
+  ------------------------------------------------------------
+  sectetur a + tation ullamco: 1 user(s)
+   aliquip ex  + dolor sit : 1 user(s)
+  o eius + sum dolor: 1 user(s)
+  co labori + d temp: 1 user(s)
+   nostrud  + idunt : 1 user(s)
+
+👥 USER SEGMENTATION BY APP USAGE
+  ------------------------------------------------------------
+  Power users (2+ apps):    5 users (   50%)
+  Regular users (1 app):    1 users (   10%)
+  Casual users (0 apps):    4 users (   40%)
+
+📋 DETAILED USER BREAKDOWN
+  ------------------------------------------------------------
+  sed do eiusmod tempo: 2 apps - [sectetur a, tation ullamco]
+  olore magna aliqua. Ut enim ad minim veni: 2 apps - [dolor sit ,  aliquip ex ]
+  minim veniam, quis n: 2 apps - [sum dolor, o eius]
+  olore magna aliqua. : 2 apps - [d temp, co labori]
+  liquip ex ea commodo: 2 apps - [idunt ,  nostrud ]
+  Ut enim ad minim ven: 1 apps - [ ad minim veni]
+  ipiscing elit, sed d: 0 apps (auth-only events)
+  niam, quis nostrud e: 0 apps (auth-only events)
+  mco laboris nisi ut : 0 apps (auth-only events)
+  trud exercitation ul: 0 apps (auth-only events)
+
+💡 KEY INSIGHTS
+  ------------------------------------------------------------
+  • 5 users (50%) access multiple apps - co-occurrence patterns visible
+  • 5 distinct app pairs suggest workflow patterns
+  • 4 users (40%) in auth-only events - potential license waste
+  • Even in 13-second snapshot, role signatures are detectable
+
+======================================================================

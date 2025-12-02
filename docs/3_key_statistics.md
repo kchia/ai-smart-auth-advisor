@@ -21,12 +21,6 @@
 - **20 target entries** total (some events have 2 targets)
 - **7 events (39%)** have no targets (auth/policy events)
 
-App access patterns from the 18 events across 10 users:
-
-- 50% power users (5/10) - accessing 2 apps (max in this sample)
-- 10% regular users (1/10) - accessing 1 app
-- 40% casual users (4/10) - accessing 0 apps (auth-only events)
-
 ### **Authentication Patterns**
 
 - **Most common auth step:** 8 (6 events)

@@ -107,16 +107,6 @@ Legend: ★★★ Critical  ★★ Important  ★ Interesting
 7. **`client.device`** / **`client.userAgent.browser`** - What device/browser?
 8. **`client.geographicalContext.*`** - Where are they working from?
 
-### **Derived Metrics:**
-
-- **App switching frequency** = count of distinct `target[].id` per user per day
-- **Authentication friction** = ratio of FAILURE/CHALLENGE to SUCCESS outcomes
-- **Session length** = time between first and last event in
-  `authenticationContext.rootSessionId`
-- **Device diversity** = count of distinct devices per user
-- **Geographic mobility** = count of distinct cities per user
-- **Context switching velocity** = events per hour with different `target[].id`
-
 ---
 
 ## Data Quality Notes
